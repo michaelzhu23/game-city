@@ -1,9 +1,9 @@
-.card {
+.card-size {
   width: 21rem;
   height: 440px;
 }
 
-.card-img-top{
+.img-size{
   object-fit: contain;
   height: 250px;
 }
