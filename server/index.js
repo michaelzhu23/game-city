@@ -33,6 +33,10 @@ app.get('/api/products', function (req, res, next) {
     .catch(err => next(err));
 });
 
+app.get('/api/products/:productId', function (req, res, next) {
+
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
