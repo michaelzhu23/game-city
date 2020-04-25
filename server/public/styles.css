@@ -1,0 +1,14 @@
+.card {
+  width: 21rem;
+  height: 440px;
+}
+
+.card-img-top{
+  object-fit: contain;
+  height: 250px;
+}
+
+.heading{
+  width: 1110px;
+  margin: auto;
+}

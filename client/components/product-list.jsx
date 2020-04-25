@@ -22,10 +22,10 @@ export default class ProductList extends React.Component {
       <div className="container">
         <div className="row row-cols-3">
           {
-            this.state.map(product => {
+            this.state.products.map(product => {
               return (
                 <ProductListItem
-                  key={product.id}
+                  key={product.productId}
                   product={product}
                 />
               );
