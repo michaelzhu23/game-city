@@ -1,14 +1,24 @@
 .card-size {
   width: 21rem;
-  height: 440px;
+  height: 470px;
 }
 
 .img-size{
   object-fit: contain;
-  height: 250px;
+  height: 280px;
+}
+
+.img-size-detail{
+  object-fit: contain;
+  height: 300px;
 }
 
 .heading{
   width: 1110px;
+  margin: auto;
+}
+
+.details-card{
+  max-width: 1110px;
   margin: auto;
 }
