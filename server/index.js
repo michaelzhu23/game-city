@@ -44,7 +44,15 @@ app.get('/api/products/:productId', function (req, res, next) {
   where "productId" = $1
   `;
   const values = [req.params.productId];
-  db.query(sql, values);
+  db.query(sql, values)
+    .then(result => {
+      if (!result.rows[0]) {
+        next(new ClientError(`cannot find product with 'productId' ${productId}`, 404));
+      } else {
+        res.status(200).json(result.rows[0]);
+      }
+    })
+    .catch(err => next(err));
 });
 
 app.use('/api', (req, res, next) => {
