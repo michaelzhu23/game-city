@@ -9,7 +9,7 @@ export default class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/products/1')
+    fetch(`/api/products/${this.props.viewParamsState.productId}`)
       .then(response => response.json())
       .then(data => this.setState({ product: data }));
   }
@@ -18,7 +18,7 @@ export default class ProductDetails extends React.Component {
     if (this.state.product) {
       return (
         <div className="card details-card">
-          <div className="col-md-12 m-4">
+          <div className="col-md-12 my-4">
             <p className="text-secondary">&#60; Back to catalog</p>
           </div>
           <div className="row no-gutters">
