@@ -29,7 +29,7 @@ export default class App extends React.Component {
     if (this.state.view.name === 'catalog') {
       page = <ProductList setProductView={this.setView} />;
     } else if (this.state.view.name === 'details') {
-      page = <ProductDetails productId={this.state.view.params} setProductView={this.setView}/>;
+      page = <ProductDetails viewParamsState={this.state.view.params} setProductView={this.setView}/>;
     }
     return (
       <>
