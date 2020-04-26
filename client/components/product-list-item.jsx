@@ -7,7 +7,7 @@ export default function ProductListItem(props) {
         onClick={() => {
           props.setProductView('details', { productId: props.product.productId });
         }}
-        className="card card-size">
+        className="card card-size on-hover">
         <img src={`${props.product.image}`} className="card-img-top img-size" alt=""/>
         <div className="card-body">
           <h5 className="card-title mb-4">{props.product.name}</h5>

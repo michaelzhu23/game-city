@@ -38,7 +38,7 @@ export default class App extends React.Component {
             <Header />
           </div>
         </section>
-        <main className="py-5 bg-light">
+        <main className="py-5">
           {page}
         </main>
       </>

@@ -17,9 +17,15 @@ export default class ProductDetails extends React.Component {
   render() {
     if (this.state.product) {
       return (
-        <div className="card details-card">
+        <div className="card details-card ">
           <div className="col-md-12 my-4">
-            <p className="text-secondary">&#60; Back to catalog</p>
+            <p
+              className="text-secondary d-inline on-hover"
+              onClick={() => {
+                this.props.setProductView('catalog', {});
+              }}>
+              &#60; Back to catalog
+            </p>
           </div>
           <div className="row no-gutters">
             <div className="col-md-5 pl-3">

@@ -22,3 +22,7 @@
   max-width: 1110px;
   margin: auto;
 }
+
+.on-hover:hover{
+  cursor: pointer;
+}
