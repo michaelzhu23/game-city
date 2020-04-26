@@ -27,6 +27,7 @@ export default class ProductList extends React.Component {
                 <ProductListItem
                   key={product.productId}
                   product={product}
+                  setProductView={this.props.setProductView}
                 />
               );
             })

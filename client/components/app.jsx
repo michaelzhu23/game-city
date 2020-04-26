@@ -11,6 +11,7 @@ export default class App extends React.Component {
         params: {}
       }
     };
+    this.setView = this.setView.bind(this);
   }
 
   setView(name, params) {
@@ -31,7 +32,7 @@ export default class App extends React.Component {
           </div>
         </section>
         <main className="py-5 bg-light">
-          <ProductList/>
+          <ProductList setProductView={this.setView}/>
         </main>
       </>
     );
