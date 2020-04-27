@@ -55,6 +55,10 @@ app.get('/api/products/:productId', function (req, res, next) {
     .catch(err => next(err));
 });
 
+app.get('/api/cart', function (req, res, next) {
+  res.status(200).json({});
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
