@@ -59,6 +59,10 @@ app.get('/api/cart', function (req, res, next) {
   res.status(200).json({});
 });
 
+app.post('/api/cart', function (req, res, next) {
+
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
