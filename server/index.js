@@ -105,7 +105,26 @@ app.post('/api/cart', function (req, res, next) {
         db.query(sql, params)
       );
     })
-    .then()
+    .then(result => {
+      const sql = `
+      select "c"."cartItemId",
+      "c"."price",
+      "p"."productId",
+      "p"."image",
+      "p"."name",
+      "p"."shortDescription"
+      from "cartItems" as "c"
+      join "products" as "p" using ("productId")
+      where "c"."cartItemId" = $1
+      `;
+      const params = [result.rows[0].cartItemId];
+      return (
+        db.query(sql, params)
+          .then(result => {
+            res.status(201).json(result.rows[0]);
+          })
+      );
+    })
     .catch(err => next(err));
 });
 
