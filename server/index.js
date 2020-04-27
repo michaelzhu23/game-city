@@ -71,7 +71,28 @@ app.post('/api/cart', function (req, res, next) {
   `;
   const values = [req.body.productId];
   db.query(sql, values)
-    .then()
+    .then(result => {
+      if (!result.rows[0]) {
+        next(new ClientError(`cannot find product with 'productId' ${productId}`, 400));
+      } else {
+        const productPrice = result.rows[0].price;
+        const sql = `
+        insert into "carts" ("cartId", "createdAt")
+        values (default, default)
+        returning "cartId"
+        `;
+        return (
+          db.query(sql)
+            .then(result => {
+              const cartEntry = {
+                cartId: result.rows[0].cartId,
+                price: productPrice
+              };
+              return cartEntry;
+            })
+        );
+      }
+    })
     .then()
     .then()
     .catch(err => next(err));
