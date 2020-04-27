@@ -64,6 +64,17 @@ app.post('/api/cart', function (req, res, next) {
   if (isNaN(productId) || !Number.isInteger(productId) || productId <= 0) {
     return res.status(400).json({ error: 'productId must be a positive integer' });
   }
+  const sql = `
+  select "price"
+  from "products"
+  where "productId" = $1
+  `;
+  const values = [req.params.productId];
+  db.query(sql, values)
+    .then()
+    .then()
+    .then()
+    .catch(err => next(err));
 });
 
 app.use('/api', (req, res, next) => {
