@@ -74,6 +74,12 @@ app.post('/api/cart', function (req, res, next) {
     .then(result => {
       if (!result.rows[0]) {
         next(new ClientError(`cannot find product with 'productId' ${productId}`, 400));
+      } else if (req.session.cartId) {
+        const cartEntry = {
+          cartId: req.session.cartId,
+          price: result.rows[0].price
+        };
+        return cartEntry;
       } else {
         const productPrice = result.rows[0].price;
         const sql = `
