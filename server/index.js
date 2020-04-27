@@ -60,7 +60,10 @@ app.get('/api/cart', function (req, res, next) {
 });
 
 app.post('/api/cart', function (req, res, next) {
-
+  const productId = Number(req.params.productId);
+  if (isNaN(productId) || !Number.isInteger(productId) || productId <= 0) {
+    return res.status(400).json({ error: 'productId must be a positive integer' });
+  }
 });
 
 app.use('/api', (req, res, next) => {
