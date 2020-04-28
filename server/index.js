@@ -91,7 +91,7 @@ app.post('/api/cart', function (req, res, next) {
   db.query(sql, params)
     .then(result => {
       if (!result.rows[0]) {
-        next(new ClientError(`cannot find product with 'productId' ${productId}`, 400));
+        throw new ClientError(`cannot find product with 'productId' ${productId}`, 400);
       } else if (req.session.cartId) {
         const cartEntry = {
           cartId: req.session.cartId,
