@@ -44,9 +44,9 @@ export default class App extends React.Component {
     }
     return (
       <>
-        <section className="p-3 bg-dark text-white">
-          <div className="heading">
-            <Header />
+        <section className="col-12 p-2 bg-dark text-white">
+          <div className="row heading">
+            <Header cartItemCount={this.state.cart.length}/>
           </div>
         </section>
         <main className="py-5">
