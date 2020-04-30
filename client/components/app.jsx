@@ -7,12 +7,18 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      cart: [],
       view: {
         name: 'catalog',
         params: {}
       }
     };
     this.setView = this.setView.bind(this);
+    this.addToCart = this.addToCart.bind(this);
+  }
+
+  componentDidMount() {
+    this.getCartItems();
   }
 
   setView(name, params) {
@@ -24,18 +30,40 @@ export default class App extends React.Component {
     });
   }
 
+  addToCart(product) {
+    const request = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(product)
+    };
+    fetch('/api/cart', request)
+      .then(response => response.json())
+      .then(data => {
+        const cartItems = this.state.cart.slice();
+        cartItems.push(data);
+        this.setState({ cart: cartItems });
+      })
+      .catch(err => console.error(err));
+  }
+
+  getCartItems() {
+    fetch('/api/cart')
+      .then(response => response.json())
+      .then(data => this.setState({ cart: data }));
+  }
+
   render() {
     let page;
     if (this.state.view.name === 'catalog') {
       page = <ProductList setProductView={this.setView} />;
     } else if (this.state.view.name === 'details') {
-      page = <ProductDetails viewParamsState={this.state.view.params} setProductView={this.setView}/>;
+      page = <ProductDetails addProductToCart={this.addToCart} viewParamsState={this.state.view.params} setProductView={this.setView}/>;
     }
     return (
       <>
-        <section className="p-3 bg-dark text-white">
-          <div className="heading">
-            <Header />
+        <section className="col-12 p-2 bg-dark text-white">
+          <div className="row heading">
+            <Header cartItemCount={this.state.cart.length}/>
           </div>
         </section>
         <main className="py-5">
