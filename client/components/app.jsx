@@ -14,6 +14,7 @@ export default class App extends React.Component {
       }
     };
     this.setView = this.setView.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidMount() {
@@ -56,7 +57,7 @@ export default class App extends React.Component {
     if (this.state.view.name === 'catalog') {
       page = <ProductList setProductView={this.setView} />;
     } else if (this.state.view.name === 'details') {
-      page = <ProductDetails viewParamsState={this.state.view.params} setProductView={this.setView}/>;
+      page = <ProductDetails addProductToCart={this.addToCart} viewParamsState={this.state.view.params} setProductView={this.setView}/>;
     }
     return (
       <>
