@@ -1,0 +1,38 @@
+import React from 'react';
+import CartSummaryItem from './cart-summary-item';
+
+export default function CartSummary(props) {
+  let cartItems;
+  if (!props.cartItems.length) {
+    cartItems = <p>Your cart is empty</p>;
+  } else {
+    cartItems = props.cartItems.map(cartItem => {
+      return (
+        <CartSummaryItem
+          key={cartItem.productId}
+          cartItem={cartItem}
+        />
+      );
+    });
+  }
+  let totalPrice = 0;
+  for (let i = 0; i < props.cartItems.length; i++) {
+    totalPrice += props.cartItems[i].price;
+  }
+  return (
+    <div className="container">
+      <div className="col-md-12 my-4">
+        <p
+          className="text-secondary d-inline on-hover"
+          onClick={() => {
+            props.setProductView('catalog', {});
+          }}>
+        &#60; Back to catalog
+        </p>
+      </div>
+      <h1>My Cart</h1>
+      {cartItems}
+      <h3>Item Total ${(totalPrice / 100).toFixed(2)}</h3>
+    </div>
+  );
+}
