@@ -24,9 +24,7 @@ export default function CartSummary(props) {
       <div className="col-md-12 mb-4">
         <p
           className="text-secondary d-inline on-hover"
-          onClick={() => {
-            props.setProductView('catalog', {});
-          }}>
+          onClick={() => props.setView('catalog', {})}>
         &#60; Back to catalog
         </p>
       </div>
