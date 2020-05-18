@@ -66,7 +66,7 @@ export default class App extends React.Component {
       <>
         <section className="col-12 p-2 bg-dark text-white">
           <div className="row heading">
-            <Header cartItemCount={this.state.cart.length}/>
+            <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
           </div>
         </section>
         <main className="py-5">
