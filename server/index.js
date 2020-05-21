@@ -162,6 +162,18 @@ app.post('/api/orders', (req, res, next) => {
   } else if (!req.body.shippingAddress) {
     return res.status(400).json({ error: 'shippingAddress is a required field.' });
   }
+  const sql = `
+  insert into "orders" ("cartId", "name", "creditCard", "shippingAddress")
+  values ($1, $2, $3, $4)
+  returning "orderId", "name", "creditCard", "shippingAddress", "createdAt"
+  `;
+  const params = [req.session.cartId, req.body.name, req.body.creditCard, req.body.shippingAddress];
+  db.query(sql, params)
+    .then(result => {
+      delete req.session.cartId;
+      res.status(201).json(result.rows[0]);
+    })
+    .catch(err => next(err));
 });
 
 app.use('/api', (req, res, next) => {
