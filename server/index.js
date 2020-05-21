@@ -153,7 +153,9 @@ app.post('/api/cart', function (req, res, next) {
 });
 
 app.post('/api/orders', (req, res, next) => {
-
+  if (!req.session.cartId) {
+    return res.status(400).json({ error: 'missing cartId. please add an item to cart.' });
+  }
 });
 
 app.use('/api', (req, res, next) => {
