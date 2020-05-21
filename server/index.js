@@ -154,7 +154,13 @@ app.post('/api/cart', function (req, res, next) {
 
 app.post('/api/orders', (req, res, next) => {
   if (!req.session.cartId) {
-    return res.status(400).json({ error: 'missing cartId. please add an item to cart.' });
+    return res.status(400).json({ error: 'Missing cartId. Please add an item to cart.' });
+  } else if (!req.body.name) {
+    return res.status(400).json({ error: 'name is a required field.' });
+  } else if (!req.body.creditCard) {
+    return res.status(400).json({ error: 'creditCard is a required field.' });
+  } else if (!req.body.shippingAddress) {
+    return res.status(400).json({ error: 'shippingAddress is a required field.' });
   }
 });
 
