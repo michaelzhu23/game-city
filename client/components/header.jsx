@@ -9,8 +9,8 @@ export default function Header(props) {
   }
   return (
     <>
-      <h2 className="col-6 p-0"><i className="fas fa-dollar-sign mr-2"></i>Wicked Sales</h2>
-      <div className="px-2 col-6 d-flex justify-content-end align-items-end">
+      <h3 className="col-6 p-0 m-0"><i className="fas fa-dollar-sign mr-2"></i>Wicked Sales</h3>
+      <div className="p-0 col-6 d-flex justify-content-end align-items-end">
         <div
           className="d-flex justify-content-end align-items-end on-hover"
           onClick={() => props.setView('cart', {})}

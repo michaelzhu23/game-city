@@ -19,6 +19,18 @@ export default function CartSummary(props) {
   for (let i = 0; i < props.cartItems.length; i++) {
     totalPrice += props.cartItems[i].price;
   }
+  let checkoutButton;
+  if (props.cartItems.length) {
+    checkoutButton = (
+      <button
+        onClick={() => props.setView('checkout', {})}
+        type="button"
+        className="btn btn-primary"
+      >
+        Checkout
+      </button>
+    );
+  }
   return (
     <div className="container">
       <div className="col-md-12 mb-4">
@@ -30,7 +42,10 @@ export default function CartSummary(props) {
       </div>
       <h1 className="mb-5">My Cart</h1>
       {cartItems}
-      <h3 className="mt-3">Item Total ${(totalPrice / 100).toFixed(2)}</h3>
+      <div className="d-flex justify-content-between align-items-baseline">
+        <h3 className="mt-3">Item Total ${(totalPrice / 100).toFixed(2)}</h3>
+        {checkoutButton}
+      </div>
     </div>
   );
 }

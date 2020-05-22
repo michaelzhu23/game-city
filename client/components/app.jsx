@@ -11,7 +11,7 @@ export default class App extends React.Component {
     this.state = {
       cart: [],
       view: {
-        name: 'checkout',
+        name: 'cart',
         params: {}
       }
     };
@@ -84,7 +84,7 @@ export default class App extends React.Component {
     }
     return (
       <>
-        <section className="col-12 p-2 bg-dark text-white">
+        <section className="col-12 p-3 bg-dark text-white">
           <div className="row heading col-12 p-0">
             <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
           </div>
