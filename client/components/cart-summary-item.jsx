@@ -4,8 +4,8 @@ export default function CartSummaryItem(props) {
   return (
     <div className="card details-card mb-4">
       <div className="row no-gutters">
-        <div className="col-md-5 pl-3">
-          <img src={`${props.cartItem.image}`} className="card-img img-size-detail" alt="" />
+        <div className="col-md-5">
+          <img src={`${props.cartItem.image}`} className="card-img img-size" alt="" />
         </div>
         <div className="col-md-7 d-flex align-items-center">
           <div className="card-body">

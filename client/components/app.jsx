@@ -3,6 +3,7 @@ import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
+import CheckoutForm from './checkout-form';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -10,12 +11,13 @@ export default class App extends React.Component {
     this.state = {
       cart: [],
       view: {
-        name: 'catalog',
+        name: 'cart',
         params: {}
       }
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
 
   componentDidMount() {
@@ -53,6 +55,22 @@ export default class App extends React.Component {
       .then(data => this.setState({ cart: data }));
   }
 
+  placeOrder(customerInfo) {
+    const request = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(customerInfo)
+    };
+    fetch('/api/orders', request)
+      .then(response => {
+        if (response.ok) {
+          this.setState({ cart: [] });
+          this.setView('catalog', {});
+        }
+      })
+      .catch(err => console.error(err));
+  }
+
   render() {
     let page;
     if (this.state.view.name === 'catalog') {
@@ -61,11 +79,13 @@ export default class App extends React.Component {
       page = <ProductDetails addProductToCart={this.addToCart} viewParamsState={this.state.view.params} setProductView={this.setView}/>;
     } else if (this.state.view.name === 'cart') {
       page = <CartSummary cartItems={this.state.cart} setView={this.setView}/>;
+    } else if (this.state.view.name === 'checkout') {
+      page = <CheckoutForm placeOrder={this.placeOrder} cartItems={this.state.cart} setView={this.setView}/>;
     }
     return (
       <>
-        <section className="col-12 p-2 bg-dark text-white">
-          <div className="row heading">
+        <section className="col-12 p-3 bg-dark text-white">
+          <div className="row heading col-12 p-0">
             <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
           </div>
         </section>
