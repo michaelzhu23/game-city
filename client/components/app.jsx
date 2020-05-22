@@ -84,7 +84,7 @@ export default class App extends React.Component {
     return (
       <>
         <section className="col-12 p-2 bg-dark text-white">
-          <div className="row heading">
+          <div className="row heading col-12">
             <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
           </div>
         </section>

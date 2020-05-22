@@ -20,7 +20,7 @@ export default function CartSummary(props) {
     totalPrice += props.cartItems[i].price;
   }
   return (
-    <div className="container d-flex flex-column justify-content-around">
+    <div className="container">
       <div className="col-md-12 mb-4">
         <p
           className="text-secondary d-inline on-hover"
