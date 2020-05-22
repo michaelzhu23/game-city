@@ -4,7 +4,7 @@ import CartSummaryItem from './cart-summary-item';
 export default function CartSummary(props) {
   let cartItems;
   if (!props.cartItems.length) {
-    cartItems = <p>Your cart is empty</p>;
+    cartItems = <h2 className="text-danger mb-5">Your cart is empty!</h2>;
   } else {
     cartItems = props.cartItems.map(cartItem => {
       return (
