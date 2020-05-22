@@ -8,6 +8,31 @@ export default class CheckoutForm extends React.Component {
       creditCard: '',
       address: ''
     };
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleCreditCardChange = this.handleCreditCardChange.bind(this);
+    this.handleAddressChange = this.handleAddressChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleNameChange(event) {
+    this.setState({ name: event.target.value });
+  }
+
+  handleCreditCardChange(event) {
+    this.setState({ creditCard: event.target.value });
+  }
+
+  handleAddressChange(event) {
+    this.setState({ address: event.target.value });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.placeOrder({
+      name: this.state.name,
+      creditCard: this.state.creditCard,
+      shippingAddress: this.state.address
+    });
   }
 
   render() {
@@ -19,28 +44,50 @@ export default class CheckoutForm extends React.Component {
       <div className="container">
         <h1 className="mb-4">Checkout</h1>
         <h5 className="mb-5 text-secondary">Order Total ${(totalPrice / 100).toFixed(2)}</h5>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="customerName">Name</label>
-            <input required type="text" className="form-control" id="customerName"/>
+            <input
+              onChange={this.handleNameChange}
+              value={this.state.name}
+              required
+              type="text"
+              className="form-control"
+              id="customerName"
+            />
           </div>
           <div className="form-group">
             <label htmlFor="creditCardNumber">Credit Card</label>
-            <input required type="number" className="form-control" id="creditCardNumber"/>
+            <input
+              onChange={this.handleCreditCardChange}
+              value={this.state.creditCard}
+              required
+              type="number"
+              className="form-control"
+              id="creditCardNumber"
+            />
           </div>
           <div className="form-group">
             <label htmlFor="customerShippingAddress">Shipping Address</label>
-            <textarea required className="form-control" id="customerShippingAddress" rows="4"></textarea>
+            <textarea
+              onChange={this.handleAddressChange}
+              value={this.state.address}
+              required
+              className="form-control"
+              id="customerShippingAddress"
+              rows="4"
+            >
+            </textarea>
+          </div>
+          <div className="mt-5 p-0 d-flex justify-content-between align-items-baseline">
+            <p
+              className="text-secondary d-inline on-hover"
+              onClick={() => this.props.setView('catalog', {})}>
+              &#60; Continue Shopping
+            </p>
+            <button type="submit" className="btn btn-primary">Place Order</button>
           </div>
         </form>
-        <div className="col-md-12 mt-5 p-0 d-flex justify-content-between">
-          <p
-            className="text-secondary d-inline on-hover"
-            onClick={() => this.props.setView('catalog', {})}>
-            &#60; Continue Shopping
-          </p>
-          <button type="submit" className="btn btn-primary">Primary</button>
-        </div>
       </div>
     );
   }
