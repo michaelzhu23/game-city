@@ -11,7 +11,7 @@ export default class App extends React.Component {
     this.state = {
       cart: [],
       view: {
-        name: 'catalog',
+        name: 'checkout',
         params: {}
       }
     };
@@ -80,12 +80,12 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'cart') {
       page = <CartSummary cartItems={this.state.cart} setView={this.setView}/>;
     } else if (this.state.view.name === 'checkout') {
-      page = <CheckoutForm placeOrder={this.placeOrder} cartItems={this.state.cart}/>;
+      page = <CheckoutForm placeOrder={this.placeOrder} cartItems={this.state.cart} setView={this.setView}/>;
     }
     return (
       <>
         <section className="col-12 p-2 bg-dark text-white">
-          <div className="row heading col-12">
+          <div className="row heading col-12 p-0">
             <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
           </div>
         </section>
