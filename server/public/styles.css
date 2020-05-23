@@ -1,11 +1,15 @@
+body {
+  box-sizing: border-box;
+}
+
 .card-size {
-  width: 21rem;
-  height: 470px;
+  height: 100%;
 }
 
 .img-size{
   object-fit: contain;
   height: 280px;
+  padding-top: 20px;
 }
 
 .img-size-detail{
