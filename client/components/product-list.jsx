@@ -20,7 +20,7 @@ export default class ProductList extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="row row-cols-3">
+        <div className="row">
           {
             this.state.products.map(product => {
               return (

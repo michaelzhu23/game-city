@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ProductListItem(props) {
   return (
-    <div className="col mb-4">
+    <div className="col-12 col-md-6 col-lg-4 mb-4">
       <div
         onClick={() => {
           props.setProductView('details', { productId: props.product.productId });
