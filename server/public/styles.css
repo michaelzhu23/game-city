@@ -47,3 +47,14 @@ body {
 .text-yellow {
   color: #FDEF17;
 }
+
+.montserrat-black-italic {
+  font-family: montserrat;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.montserrat-regular {
+  font-family: montserrat;
+  font-weight: 400;
+}

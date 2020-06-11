@@ -9,7 +9,15 @@ export default function Header(props) {
   }
   return (
     <>
-      <h3 className="col-8 p-0 m-0"><i className="fas fa-gamepad mr-2"></i>Game <span className="text-yellow">City<i className="fas fa-city ml-2"></i></span></h3>
+      <h3 className="col-8 p-0 m-0">
+        <span className="montserrat-black-italic">
+          <i className="fas fa-gamepad mr-2"></i>
+          GAME
+        </span> <span className="text-yellow montserrat-regular">
+            CITY
+          <i className="fas fa-city ml-2"></i>
+        </span>
+      </h3>
       <div className="p-0 col-4 d-flex justify-content-end align-items-end">
         <div
           className="d-flex justify-content-end align-items-end on-hover"
