@@ -45,7 +45,8 @@ export default class ProductDetails extends React.Component {
                   <button
                     onClick={() => this.props.addProductToCart(this.props.viewParamsState)}
                     type="button"
-                    className="btn btn-primary">
+                    className="btn background-yellow montserrat-semi-bold">
+                    <i className="pr-2 m-0 h5 fas fa-shopping-cart"></i>
                   Add to Cart
                   </button>
                 </div>

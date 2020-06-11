@@ -64,3 +64,12 @@ body {
   font-family: montserrat;
   font-weight: 700;
 }
+
+.montserrat-semi-bold {
+  font-family: montserrat;
+  font-weight: 600;
+}
+
+.background-yellow {
+  background-color: #FDEF17;;
+}
