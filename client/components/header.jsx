@@ -24,7 +24,7 @@ export default function Header(props) {
           onClick={() => props.setView('cart', {})}
         >
           <h6>{itemNumber}</h6>
-          <i className="px-2 h2 fas fa-shopping-bag"></i>
+          <i className="px-2 h3 fas fa-shopping-cart"></i>
         </div>
       </div>
     </>
