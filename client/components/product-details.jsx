@@ -16,6 +16,11 @@ export default class ProductDetails extends React.Component {
 
   render() {
     if (this.state.product) {
+      const longDescription = this.state.product.longDescription.split('\n').map((line, index) => {
+        return (
+          <p key={index}>{line}</p>
+        );
+      });
       return (
         <div className="container">
           <div className="card details-card ">
@@ -47,7 +52,7 @@ export default class ProductDetails extends React.Component {
               </div>
             </div>
             <div className="col-md-12 my-3">
-              <p>{this.state.product.longDescription}</p>
+              {longDescription}
             </div>
           </div>
         </div>
