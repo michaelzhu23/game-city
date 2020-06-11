@@ -23,7 +23,7 @@ export default function Header(props) {
           className="d-flex justify-content-end align-items-end on-hover"
           onClick={() => props.setView('cart', {})}
         >
-          <h6>{itemNumber}</h6>
+          <h6 className="montserrat-bold">{itemNumber}</h6>
           <i className="px-2 h3 fas fa-shopping-cart"></i>
         </div>
       </div>
