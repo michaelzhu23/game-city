@@ -52,6 +52,7 @@ export default class ProductDetails extends React.Component {
               </div>
             </div>
             <div className="col-md-12 my-3">
+              <h3>Description</h3>
               {longDescription}
             </div>
           </div>
