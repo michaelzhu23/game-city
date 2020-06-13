@@ -20,6 +20,7 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.modalButtonClick = this.modalButtonClick.bind(this);
   }
 
   componentDidMount() {
@@ -99,7 +100,7 @@ export default class App extends React.Component {
         <main className="py-5">
           {page}
         </main>
-        {this.state.disclaimerAcknowledged ? null : <DisclaimerModal/>}
+        {this.state.disclaimerAcknowledged ? null : <DisclaimerModal modalButtonClick={this.modalButtonClick}/>}
       </>
     );
   }

@@ -8,10 +8,10 @@ export default function DisclaimerModal(props) {
           <hr />
             Check the box below to acknowledge that the merchandise displayed here is not available for purchase, that you will not provide genuine financial or personal information, and that you are aware no purchases will truly be processed.
         </span>
-        <form className="mt-3">
+        <form onSubmit={props.modalButtonClick} className="mt-3">
           <div className="form-check mb-3">
-            <input type="checkbox" className="form-check-input" id="acknowledgement" />
-            <label required className="form-check-label" htmlFor="acknowledgement">I acknowledge that this is strictly a demo application.</label>
+            <input required type="checkbox" className="form-check-input" id="acknowledgement" />
+            <label className="form-check-label" htmlFor="acknowledgement">I acknowledge that this is strictly a demo application.</label>
           </div>
           <button type="submit" className="btn btn-danger w-100">Continue</button>
         </form>
