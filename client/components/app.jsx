@@ -4,6 +4,7 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import DisclaimerModal from './disclaimer-modal';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -98,6 +99,7 @@ export default class App extends React.Component {
         <main className="py-5">
           {page}
         </main>
+        {this.state.disclaimerAcknowledged ? null : <DisclaimerModal/>}
       </>
     );
   }
