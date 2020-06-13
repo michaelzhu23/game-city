@@ -72,6 +72,11 @@ export default class App extends React.Component {
       .catch(err => console.error(err));
   }
 
+  modalButtonClick(event) {
+    event.preventDefault();
+    this.setState({ disclaimerAcknowledged: true });
+  }
+
   render() {
     let page;
     if (this.state.view.name === 'catalog') {
