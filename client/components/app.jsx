@@ -10,6 +10,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       cart: [],
+      disclaimerAcknowledged: false,
       view: {
         name: 'catalog',
         params: {}
