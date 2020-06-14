@@ -25,7 +25,7 @@ export default function CartSummary(props) {
       <button
         onClick={() => props.setView('checkout', {})}
         type="button"
-        className="btn btn-primary"
+        className="btn background-yellow montserrat-semi-bold"
       >
         Checkout
       </button>

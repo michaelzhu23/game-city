@@ -85,7 +85,7 @@ export default class CheckoutForm extends React.Component {
               onClick={() => this.props.setView('catalog', {})}>
               <i className="fas fa-chevron-circle-left fa-lg mr-1"></i> Continue Shopping
             </p>
-            <button type="submit" className="btn btn-primary">Place Order</button>
+            <button type="submit" className="btn background-yellow montserrat-semi-bold">Place Order</button>
           </div>
         </form>
       </div>
