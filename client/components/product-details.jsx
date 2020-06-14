@@ -30,7 +30,7 @@ export default class ProductDetails extends React.Component {
                 onClick={() => {
                   this.props.setProductView('catalog', {});
                 }}>
-              &#60; Back to catalog
+                <i className="fas fa-chevron-circle-left fa-lg mr-1"></i> Back to products page
               </p>
             </div>
             <div className="row no-gutters">
