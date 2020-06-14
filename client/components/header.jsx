@@ -9,7 +9,10 @@ export default function Header(props) {
   }
   return (
     <>
-      <h3 className="p-0 m-0">
+      <h3
+        className="p-0 m-0 on-hover"
+        onClick={() => props.setView('catalog', {})}
+      >
         <span className="montserrat-black-italic">
           <i className="fas fa-gamepad mr-2"></i>
           GAME
