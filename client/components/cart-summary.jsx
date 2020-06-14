@@ -25,7 +25,7 @@ export default function CartSummary(props) {
       <button
         onClick={() => props.setView('checkout', {})}
         type="button"
-        className="btn btn-primary"
+        className="btn background-yellow montserrat-semi-bold"
       >
         Checkout
       </button>
@@ -33,11 +33,11 @@ export default function CartSummary(props) {
   }
   return (
     <div className="container">
-      <div className="col-md-12 mb-4">
+      <div className="col-md-12 mb-4 p-0">
         <p
           className="text-secondary d-inline on-hover"
           onClick={() => props.setView('catalog', {})}>
-        &#60; Back to catalog
+          <i className="fas fa-chevron-circle-left fa-lg mr-1"></i> Continue Shopping
         </p>
       </div>
       <h1 className="mb-5">My Cart</h1>

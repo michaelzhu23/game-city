@@ -4,12 +4,14 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import DisclaimerModal from './disclaimer-modal';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       cart: [],
+      disclaimerAcknowledged: false,
       view: {
         name: 'catalog',
         params: {}
@@ -18,6 +20,7 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.modalButtonClick = this.modalButtonClick.bind(this);
   }
 
   componentDidMount() {
@@ -71,6 +74,11 @@ export default class App extends React.Component {
       .catch(err => console.error(err));
   }
 
+  modalButtonClick(event) {
+    event.preventDefault();
+    this.setState({ disclaimerAcknowledged: true });
+  }
+
   render() {
     let page;
     if (this.state.view.name === 'catalog') {
@@ -84,14 +92,15 @@ export default class App extends React.Component {
     }
     return (
       <>
-        <section className="col-12 p-3 bg-dark text-white">
-          <div className="row heading col-12 p-0">
+        <section className="col-12 p-3 background-black text-white">
+          <div className="row heading col-12 p-0 d-flex justify-content-between">
             <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
           </div>
         </section>
         <main className="py-5">
           {page}
         </main>
+        {this.state.disclaimerAcknowledged ? null : <DisclaimerModal modalButtonClick={this.modalButtonClick}/>}
       </>
     );
   }

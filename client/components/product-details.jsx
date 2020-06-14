@@ -16,6 +16,11 @@ export default class ProductDetails extends React.Component {
 
   render() {
     if (this.state.product) {
+      const longDescription = this.state.product.longDescription.split('\n').map((line, index) => {
+        return (
+          <p key={index}>{line}</p>
+        );
+      });
       return (
         <div className="container">
           <div className="card details-card ">
@@ -25,7 +30,7 @@ export default class ProductDetails extends React.Component {
                 onClick={() => {
                   this.props.setProductView('catalog', {});
                 }}>
-              &#60; Back to catalog
+                <i className="fas fa-chevron-circle-left fa-lg mr-1"></i> Back to products page
               </p>
             </div>
             <div className="row no-gutters">
@@ -40,14 +45,16 @@ export default class ProductDetails extends React.Component {
                   <button
                     onClick={() => this.props.addProductToCart(this.props.viewParamsState)}
                     type="button"
-                    className="btn btn-primary">
+                    className="btn background-yellow montserrat-semi-bold">
+                    <i className="pr-2 m-0 h5 fas fa-shopping-cart"></i>
                   Add to Cart
                   </button>
                 </div>
               </div>
             </div>
             <div className="col-md-12 my-3">
-              <p>{this.state.product.longDescription}</p>
+              <h3>Description</h3>
+              {longDescription}
             </div>
           </div>
         </div>

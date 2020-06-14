@@ -9,14 +9,25 @@ export default function Header(props) {
   }
   return (
     <>
-      <h3 className="col-8 p-0 m-0"><i className="fas fa-dollar-sign mr-2"></i>Wicked Sales</h3>
-      <div className="p-0 col-4 d-flex justify-content-end align-items-end">
+      <h3
+        className="p-0 m-0 on-hover"
+        onClick={() => props.setView('catalog', {})}
+      >
+        <span className="montserrat-black-italic">
+          <i className="fas fa-gamepad mr-2"></i>
+          GAME
+        </span> <span className="text-yellow montserrat-regular">
+            CITY
+          <i className="fas fa-city ml-2"></i>
+        </span>
+      </h3>
+      <div className="p-0 d-flex justify-content-end align-items-end">
         <div
           className="d-flex justify-content-end align-items-end on-hover"
           onClick={() => props.setView('cart', {})}
         >
-          <h6>{itemNumber}</h6>
-          <i className="px-2 h3 fas fa-shopping-cart"></i>
+          <h6 className="m-0 montserrat-bold">{itemNumber}</h6>
+          <i className="pl-2 m-0 h3 fas fa-shopping-cart"></i>
         </div>
       </div>
     </>

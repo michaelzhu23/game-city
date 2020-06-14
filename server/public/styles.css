@@ -1,5 +1,6 @@
 body {
   box-sizing: border-box;
+  font-family: montserrat;
 }
 
 .card-size {
@@ -18,7 +19,7 @@ body {
 }
 
 .heading{
-  width: 1110px;
+  max-width: 1110px;
   margin: auto;
 }
 
@@ -38,4 +39,57 @@ body {
 .grow:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.background-black {
+  background-color: black;
+}
+
+.text-yellow {
+  color: #FDEF17;
+}
+
+.montserrat-black-italic {
+  font-family: montserrat;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.montserrat-regular {
+  font-family: montserrat;
+  font-weight: 400;
+}
+
+.montserrat-bold {
+  font-family: montserrat;
+  font-weight: 700;
+}
+
+.montserrat-semi-bold {
+  font-family: montserrat;
+  font-weight: 600;
+}
+
+.background-yellow {
+  background-color: #FDEF17;;
+}
+
+.modal-overlay {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  max-width: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
