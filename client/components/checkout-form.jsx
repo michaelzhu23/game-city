@@ -79,7 +79,11 @@ export default class CheckoutForm extends React.Component {
             >
             </textarea>
           </div>
-          <div className="mt-5 p-0 d-flex justify-content-between align-items-baseline">
+          <div className="form-check my-5">
+            <input required type="checkbox" className="form-check-input" id="acknowledgement" />
+            <label className="form-check-label" htmlFor="acknowledgement">I acknowledge that this is a demo application and the information above is not my genuine financial or personal information.</label>
+          </div>
+          <div className="p-0 d-flex justify-content-between align-items-baseline">
             <p
               className="text-secondary d-inline on-hover"
               onClick={() => this.props.setView('catalog', {})}>
