@@ -11,7 +11,10 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       cart: [],
-      showIntroModal: true,
+      introModal: {
+        show: true,
+        displayNone: false
+      },
       view: {
         name: 'catalog',
         params: {}
@@ -76,7 +79,20 @@ export default class App extends React.Component {
 
   toggleIntroModal(event) {
     event.preventDefault();
-    this.setState({ showIntroModal: false });
+    this.setState({
+      introModal: {
+        show: false,
+        displayNone: false
+      }
+    });
+    setTimeout(() => {
+      this.setState({
+        introModal: {
+          show: false,
+          displayNone: true
+        }
+      });
+    }, 650);
   }
 
   render() {
@@ -101,9 +117,9 @@ export default class App extends React.Component {
           {page}
         </main>
         {
-          this.state.showIntroModal
-            ? <DisclaimerModal showModal={this.state.showIntroModal} toggleIntroModal={this.toggleIntroModal}/>
-            : null
+          this.state.introModal.displayNone
+            ? null
+            : <DisclaimerModal introModal={this.state.introModal} toggleIntroModal={this.toggleIntroModal} />
         }
       </>
     );

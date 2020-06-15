@@ -100,22 +100,22 @@ body {
 }
 
 .fade-in {
-  animation: fade-in .50s;
+  animation: fade-in .65s;
   animation-fill-mode: forwards;
 }
 
 .fade-out {
-  animation: fade-out .50s;
+  animation: fade-out .65s;
   animation-fill-mode: forwards;
 }
 
 .slide-in {
-  animation: slide-in .75s;
+  animation: slide-in .65s;
   animation-fill-mode: forwards;
 }
 
 .slide-out {
-  animation: slide-out .75s;
+  animation: slide-out .65s;
   animation-fill-mode: forwards;
 }
 
