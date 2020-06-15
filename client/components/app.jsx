@@ -11,7 +11,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       cart: [],
-      disclaimerAcknowledged: false,
+      showIntroModal: true,
       view: {
         name: 'catalog',
         params: {}
@@ -20,7 +20,7 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
-    this.modalButtonClick = this.modalButtonClick.bind(this);
+    this.toggleIntroModal = this.toggleIntroModal.bind(this);
   }
 
   componentDidMount() {
@@ -74,9 +74,9 @@ export default class App extends React.Component {
       .catch(err => console.error(err));
   }
 
-  modalButtonClick(event) {
+  toggleIntroModal(event) {
     event.preventDefault();
-    this.setState({ disclaimerAcknowledged: true });
+    this.setState({ showIntroModal: false });
   }
 
   render() {
@@ -100,7 +100,11 @@ export default class App extends React.Component {
         <main className="py-5">
           {page}
         </main>
-        {this.state.disclaimerAcknowledged ? null : <DisclaimerModal modalButtonClick={this.modalButtonClick}/>}
+        {
+          this.state.showIntroModal
+            ? <DisclaimerModal showModal={this.state.showIntroModal} toggleIntroModal={this.toggleIntroModal}/>
+            : null
+        }
       </>
     );
   }
