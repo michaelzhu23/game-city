@@ -183,6 +183,22 @@ app.delete('/api/cart/:productId', (req, res, next) => {
   } else if (!req.session.cartId) {
     return res.status(400).json({ error: 'Missing cartId. Please add an item to cart.' });
   }
+  const sql = `
+  delete from "cartItems"
+ where "cartId" = $1
+   and "productId" = $2
+   returning *;
+  `;
+  const params = [req.session.cartId, productId];
+  db.query(sql, params)
+    .then(result => {
+      if (!result.rows[0]) {
+        throw new ClientError(`There is no product with productId ${productId} in cart.`, 404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch(err => next(err));
 });
 
 app.use('/api', (req, res, next) => {
