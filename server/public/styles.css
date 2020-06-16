@@ -54,6 +54,15 @@ body {
   color: #FDEF17;
 }
 
+.text-gray {
+  transition: all 0.3s ease;
+  color: gray;
+}
+
+.text-gray:hover {
+  color: #FDEF17;
+}
+
 .montserrat-black-italic {
   font-family: montserrat;
   font-weight: 900;

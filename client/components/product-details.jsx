@@ -26,7 +26,7 @@ export default class ProductDetails extends React.Component {
           <div className="card details-card ">
             <div className="col-md-12 my-4">
               <p
-                className="text-secondary d-inline on-hover"
+                className="text-gray d-inline on-hover"
                 onClick={() => {
                   this.props.setProductView('catalog', {});
                 }}>
