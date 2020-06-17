@@ -4,19 +4,19 @@ import ConfirmRemoveModal from './confirm-remove-modal';
 
 export default function CartSummary(props) {
   let cartItems;
-  const [open, setOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [cartItemToRemove, setCartItemToRemove] = useState({ name: '', image: '' });
   const handleOpenModal = cartItem => {
-    setOpen(true);
+    setShowModal(true);
     setCartItemToRemove(cartItem);
   };
   if (!props.cartItems.length) {
     cartItems = <h2 className="text-danger mb-5">Your cart is empty!</h2>;
   } else {
-    cartItems = props.cartItems.map(cartItem => {
+    cartItems = props.cartItems.map((cartItem, index) => {
       return (
         <CartSummaryItem
-          key={cartItem.productId}
+          key={index}
           cartItem={cartItem}
           handleOpenModal = {handleOpenModal}
         />
@@ -57,9 +57,9 @@ export default function CartSummary(props) {
         </div>
       </div>
       <ConfirmRemoveModal
-        show={open}
+        show={showModal}
         cartItem={cartItemToRemove}
-        handleCloseModal={() => setOpen(false)}
+        handleCloseModal={() => setShowModal(false)}
         removeFromCart={props.removeFromCart} />
     </>
   );
