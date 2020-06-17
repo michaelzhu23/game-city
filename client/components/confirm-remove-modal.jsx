@@ -1,15 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function ConfirmRemoveModal(props) {
-  let fadeAnimation;
-  let slideAnimation;
-  if (props.show === true) {
-    fadeAnimation = 'fade-in';
-    slideAnimation = 'slide-in';
-  } else {
-    fadeAnimation = 'fade-out';
-    slideAnimation = 'slide-out';
-  }
+  const [isClosing, setIsClosing] = useState(false);
+  const fadeAnimation = !isClosing ? 'fade-in' : 'fade-out';
+  const slideAnimation = !isClosing ? 'slide-in' : 'slide-out';
   const rootClass = props.show ? `modal-overlay ${fadeAnimation}` : 'd-none';
   return (
     <div className={rootClass}>
@@ -19,13 +13,26 @@ export default function ConfirmRemoveModal(props) {
         <p>Are you sure you want to remove this item from your cart?</p>
         <div className="btn-group w-75">
           <button
-            onClick={props.handleCloseModal}
+            onClick={() => {
+              setTimeout(() => {
+                props.handleCloseModal();
+                setIsClosing(false);
+              }, 650);
+              setIsClosing(true);
+            }}
             className="btn btn-secondary"
           >
             Cancel
           </button>
           <button
-            onClick={() => props.removeFromCart(props.cartItem.productId)}
+            onClick={() => {
+              props.removeFromCart(props.cartItem.productId);
+              setTimeout(() => {
+                props.handleCloseModal();
+                setIsClosing(false);
+              }, 650);
+              setIsClosing(true);
+            }}
             className="btn btn-danger"
           >
             Remove
