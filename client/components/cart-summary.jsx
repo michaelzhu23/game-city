@@ -44,9 +44,9 @@ export default function CartSummary(props) {
       <div className="container">
         <div className="col-md-12 mb-4 p-0">
           <p
-            className="text-gray d-inline on-hover"
+            className="text-gray d-inline on-hover hvr-icon-back"
             onClick={() => props.setView('catalog', {})}>
-            <i className="fas fa-chevron-circle-left fa-lg mr-1"></i> Continue Shopping
+            <i className="fas fa-chevron-circle-left hvr-icon fa-lg"></i> Continue Shopping
           </p>
         </div>
         <h1 className="mb-5">My Cart</h1>

@@ -23,11 +23,11 @@ export default function Header(props) {
       </h3>
       <div className="p-0 d-flex justify-content-end align-items-end">
         <div
-          className="d-flex justify-content-end align-items-end on-hover"
+          className="d-flex justify-content-end align-items-end on-hover hvr-icon-forward"
           onClick={() => props.setView('cart', {})}
         >
           <h6 className="m-0 montserrat-bold">{itemNumber}</h6>
-          <i className="pl-2 m-0 h3 fas fa-shopping-cart"></i>
+          <i className="pl-1 m-0 h3 fas fa-shopping-cart hvr-icon"></i>
         </div>
       </div>
     </>

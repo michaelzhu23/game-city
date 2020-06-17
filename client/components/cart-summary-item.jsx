@@ -14,9 +14,9 @@ export default function CartSummaryItem(props) {
             <p className="card-text">{props.cartItem.shortDescription}</p>
             <p
               onClick={() => props.handleOpenModal(props.cartItem)}
-              className="text-danger montserrat-semi-bold on-hover d-inline-block"
+              className="text-danger montserrat-semi-bold on-hover d-inline-block hvr-icon-sink-away"
             >
-              <i className="fas fa-times-circle mr-1"></i>
+              <i className="fas fa-times-circle hvr-icon mr-1"></i>
             Remove item
             </p>
           </div>

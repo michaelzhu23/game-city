@@ -85,9 +85,9 @@ export default class CheckoutForm extends React.Component {
           </div>
           <div className="p-0 d-flex justify-content-between align-items-baseline">
             <p
-              className="text-gray d-inline on-hover"
+              className="text-gray d-inline on-hover hvr-icon-back"
               onClick={() => this.props.setView('catalog', {})}>
-              <i className="fas fa-chevron-circle-left fa-lg mr-1"></i> Continue Shopping
+              <i className="fas fa-chevron-circle-left hvr-icon fa-lg"></i> Continue Shopping
             </p>
             <button type="submit" className="btn background-yellow montserrat-semi-bold">Place Order</button>
           </div>
