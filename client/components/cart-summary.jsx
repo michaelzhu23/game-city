@@ -5,7 +5,7 @@ import ConfirmRemoveModal from './confirm-remove-modal';
 export default function CartSummary(props) {
   let cartItems;
   const [showModal, setShowModal] = useState(false);
-  const [cartItemToRemove, setCartItemToRemove] = useState({ name: '', image: '' });
+  const [cartItemToRemove, setCartItemToRemove] = useState({});
   const handleOpenModal = cartItem => {
     setShowModal(true);
     setCartItemToRemove(cartItem);
