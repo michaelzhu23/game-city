@@ -26,7 +26,7 @@ export default function Header(props) {
           className="d-flex justify-content-end align-items-end on-hover hvr-icon-forward"
           onClick={() => props.setView('cart', {})}
         >
-          <h6 className="m-0 montserrat-bold">{itemNumber}</h6>
+          <h5 className="m-0 montserrat-bold">{itemNumber}</h5>
           <i className="pl-1 m-0 h3 fas fa-shopping-cart hvr-icon"></i>
         </div>
       </div>
