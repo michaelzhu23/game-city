@@ -114,14 +114,18 @@ export default class App extends React.Component {
 
   render() {
     let page;
-    if (this.state.view.name === 'catalog') {
-      page = <ProductList setProductView={this.setView} />;
-    } else if (this.state.view.name === 'details') {
-      page = <ProductDetails addProductToCart={this.addToCart} viewParamsState={this.state.view.params} setProductView={this.setView}/>;
-    } else if (this.state.view.name === 'cart') {
-      page = <CartSummary removeFromCart={this.removeFromCart} cartItems={this.state.cart} setView={this.setView}/>;
-    } else if (this.state.view.name === 'checkout') {
-      page = <CheckoutForm placeOrder={this.placeOrder} cartItems={this.state.cart} setView={this.setView}/>;
+    switch (this.state.view.name) {
+      case 'catalog':
+        page = <ProductList setProductView={this.setView} />;
+        break;
+      case 'details':
+        page = <ProductDetails addProductToCart={this.addToCart} viewParamsState={this.state.view.params} setProductView={this.setView} />;
+        break;
+      case 'cart':
+        page = <CartSummary removeFromCart={this.removeFromCart} cartItems={this.state.cart} setView={this.setView} />;
+        break;
+      case 'checkout':
+        page = <CheckoutForm placeOrder={this.placeOrder} cartItems={this.state.cart} setView={this.setView} />;
     }
     return (
       <>
