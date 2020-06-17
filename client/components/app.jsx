@@ -56,13 +56,13 @@ export default class App extends React.Component {
       .catch(err => console.error(err));
   }
 
-  removeFromCart(productId) {
-    fetch(`/api/cart/${productId}`, { method: 'DELETE' })
+  removeFromCart(cartItemId) {
+    fetch(`/api/cart/${cartItemId}`, { method: 'DELETE' })
       .then(response => {
         if (response.ok) {
           const cart = this.state.cart.slice();
           for (let i = 0; i < cart.length; i++) {
-            if (cart[i].productId === productId) {
+            if (cart[i].cartItemId === cartItemId) {
               cart.splice(i, 1);
               this.setState({ cart: cart });
             }

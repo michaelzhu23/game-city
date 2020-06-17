@@ -26,7 +26,7 @@ export default function ConfirmRemoveModal(props) {
           </button>
           <button
             onClick={() => {
-              props.removeFromCart(props.cartItem.productId);
+              props.removeFromCart(props.cartItem.cartItemId);
               setTimeout(() => {
                 props.handleCloseModal();
                 setIsClosing(false);
