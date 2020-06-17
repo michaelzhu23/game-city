@@ -8,8 +8,8 @@ export default function ConfirmRemoveModal(props) {
   return (
     <div className={rootClass}>
       <div className={`modal-content p-4 ${slideAnimation}`}>
-        <h3>{props.cartItem.name}</h3>
-        <img src={`${props.cartItem.image}`} className="card-img img-size mb-4" alt="Cart Item Image" />
+        <h3>{props.cartItemToRemove.name}</h3>
+        <img src={`${props.cartItemToRemove.image}`} className="card-img img-size mb-4" alt="Cart Item Image" />
         <p>Are you sure you want to remove this item from your cart?</p>
         <div className="btn-group w-75">
           <button
@@ -26,7 +26,7 @@ export default function ConfirmRemoveModal(props) {
           </button>
           <button
             onClick={() => {
-              props.removeFromCart(props.cartItem.cartItemId);
+              props.removeFromCart(props.cartItemToRemove.cartItemId);
               setTimeout(() => {
                 props.handleCloseModal();
                 setIsClosing(false);

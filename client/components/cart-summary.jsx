@@ -58,7 +58,7 @@ export default function CartSummary(props) {
       </div>
       <ConfirmRemoveModal
         show={showModal}
-        cartItem={cartItemToRemove}
+        cartItemToRemove={cartItemToRemove}
         handleCloseModal={() => setShowModal(false)}
         removeFromCart={props.removeFromCart} />
     </>
