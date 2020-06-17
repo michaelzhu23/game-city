@@ -52,7 +52,7 @@ export default function CartSummary(props) {
         <h1 className="mb-5">My Cart</h1>
         {cartItems}
         <div className="d-flex justify-content-between align-items-baseline">
-          <h3 className="mt-3">Item Total ${(totalPrice / 100).toFixed(2)}</h3>
+          <h3 className="mt-3">Cart Total ${(totalPrice / 100).toFixed(2)}</h3>
           {checkoutButton}
         </div>
       </div>
