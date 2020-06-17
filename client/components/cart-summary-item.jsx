@@ -13,7 +13,7 @@ export default function CartSummaryItem(props) {
             <h5 className="card-subtitle mb-2 text-muted">{'$' + (props.cartItem.price / 100).toFixed(2)}</h5>
             <p className="card-text">{props.cartItem.shortDescription}</p>
             <p
-              onClick={() => props.removeFromCart(props.cartItem.productId)}
+              onClick={() => props.handleOpenModal(props.cartItem)}
               className="text-danger montserrat-semi-bold on-hover d-inline-block"
             >
               <i className="fas fa-times-circle"></i>
