@@ -11,6 +11,7 @@ export default function CartSummary(props) {
         <CartSummaryItem
           key={cartItem.productId}
           cartItem={cartItem}
+          removeFromCart={props.removeFromCart}
         />
       );
     });
