@@ -108,6 +108,20 @@ body {
   flex-direction: column;
 }
 
+.snackbar {
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 15%;
+  transform: translate(-50%, 0);
+  color: white;
+  background-color: #4caf50;
+  padding: 15px;
+  border-radius: 5px;
+  min-width: 375px;
+  text-align: center;
+}
+
 .fade-in {
   animation: fade-in .65s;
   animation-fill-mode: forwards;
