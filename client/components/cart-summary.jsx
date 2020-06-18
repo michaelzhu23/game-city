@@ -60,7 +60,8 @@ export default function CartSummary(props) {
         show={showModal}
         cartItemToRemove={cartItemToRemove}
         handleCloseModal={() => setShowModal(false)}
-        removeFromCart={props.removeFromCart} />
+        removeFromCart={props.removeFromCart}
+      />
     </>
   );
 }
