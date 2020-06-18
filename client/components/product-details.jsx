@@ -5,7 +5,10 @@ import React from 'react';
 export default class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { product: null };
+    this.state = {
+      product: null,
+      addedToCart: false
+    };
   }
 
   componentDidMount() {
