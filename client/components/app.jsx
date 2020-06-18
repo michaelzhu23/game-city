@@ -24,6 +24,7 @@ export default class App extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.toggleIntroModal = this.toggleIntroModal.bind(this);
+    this.removeFromCart = this.removeFromCart.bind(this);
   }
 
   componentDidMount() {
@@ -51,6 +52,22 @@ export default class App extends React.Component {
         const cartItems = this.state.cart.slice();
         cartItems.push(data);
         this.setState({ cart: cartItems });
+      })
+      .catch(err => console.error(err));
+  }
+
+  removeFromCart(cartItemId) {
+    fetch(`/api/cart/${cartItemId}`, { method: 'DELETE' })
+      .then(response => {
+        if (response.ok) {
+          const cart = this.state.cart.slice();
+          for (let i = 0; i < cart.length; i++) {
+            if (cart[i].cartItemId === cartItemId) {
+              cart.splice(i, 1);
+              this.setState({ cart: cart });
+            }
+          }
+        }
       })
       .catch(err => console.error(err));
   }
@@ -97,14 +114,18 @@ export default class App extends React.Component {
 
   render() {
     let page;
-    if (this.state.view.name === 'catalog') {
-      page = <ProductList setProductView={this.setView} />;
-    } else if (this.state.view.name === 'details') {
-      page = <ProductDetails addProductToCart={this.addToCart} viewParamsState={this.state.view.params} setProductView={this.setView}/>;
-    } else if (this.state.view.name === 'cart') {
-      page = <CartSummary cartItems={this.state.cart} setView={this.setView}/>;
-    } else if (this.state.view.name === 'checkout') {
-      page = <CheckoutForm placeOrder={this.placeOrder} cartItems={this.state.cart} setView={this.setView}/>;
+    switch (this.state.view.name) {
+      case 'catalog':
+        page = <ProductList setProductView={this.setView} />;
+        break;
+      case 'details':
+        page = <ProductDetails addProductToCart={this.addToCart} viewParamsState={this.state.view.params} setProductView={this.setView} />;
+        break;
+      case 'cart':
+        page = <CartSummary removeFromCart={this.removeFromCart} cartItems={this.state.cart} setView={this.setView} />;
+        break;
+      case 'checkout':
+        page = <CheckoutForm placeOrder={this.placeOrder} cartItems={this.state.cart} setView={this.setView} />;
     }
     return (
       <>

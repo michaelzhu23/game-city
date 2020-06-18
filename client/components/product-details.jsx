@@ -26,11 +26,11 @@ export default class ProductDetails extends React.Component {
           <div className="card details-card ">
             <div className="col-md-12 my-4">
               <p
-                className="text-secondary d-inline on-hover"
+                className="text-gray d-inline on-hover hvr-icon-back"
                 onClick={() => {
                   this.props.setProductView('catalog', {});
                 }}>
-                <i className="fas fa-chevron-circle-left fa-lg mr-1"></i> Back to products page
+                <i className="fas fa-chevron-circle-left hvr-icon fa-lg"></i> Back to products page
               </p>
             </div>
             <div className="row no-gutters">
@@ -45,8 +45,8 @@ export default class ProductDetails extends React.Component {
                   <button
                     onClick={() => this.props.addProductToCart(this.props.viewParamsState)}
                     type="button"
-                    className="btn background-yellow montserrat-semi-bold">
-                    <i className="pr-2 m-0 h5 fas fa-shopping-cart"></i>
+                    className="btn background-yellow montserrat-semi-bold hvr-icon-pulse-grow">
+                    <i className="pr-2 m-0 h5 fas fa-shopping-cart hvr-icon"></i>
                   Add to Cart
                   </button>
                 </div>
