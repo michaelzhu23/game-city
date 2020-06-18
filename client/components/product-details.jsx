@@ -5,7 +5,41 @@ import React from 'react';
 export default class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { product: null };
+    this.state = {
+      product: null,
+      snackBar: {
+        addedToCart: false,
+        isShowing: false
+      }
+    };
+    this.fadeOutTimer = null;
+    this.displayTimer = null;
+  }
+
+  handleAddToCart() {
+    this.setState({
+      snackBar: {
+        addedToCart: true,
+        isShowing: true
+      }
+    });
+    this.fadeOutTimer = setTimeout(() => this.setState({
+      snackBar: {
+        addedToCart: true,
+        isShowing: false
+      }
+    }), 2000);
+    this.displayTimer = setTimeout(() => this.setState({
+      snackBar: {
+        addedToCart: false,
+        isShowing: false
+      }
+    }), 3000);
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.fadeOutTimer);
+    clearTimeout(this.displayTimer);
   }
 
   componentDidMount() {
@@ -21,8 +55,11 @@ export default class ProductDetails extends React.Component {
           <p key={index}>{line}</p>
         );
       });
+      const display = this.state.snackBar.addedToCart ? '' : 'd-none';
+      const animation = this.state.snackBar.isShowing ? 'fade-in' : 'fade-out';
       return (
         <div className="container">
+          <div className={`snackbar ${animation} ${display}`}><i className="fas fa-check fa-lg mr-2"></i>{`${this.state.product.name} has been added to your cart!`}</div>
           <div className="card details-card ">
             <div className="col-md-12 my-4">
               <p
@@ -43,7 +80,10 @@ export default class ProductDetails extends React.Component {
                   <h5 className="card-subtitle mb-2 text-muted">{'$' + (this.state.product.price / 100).toFixed(2)}</h5>
                   <p className="card-text">{this.state.product.shortDescription}</p>
                   <button
-                    onClick={() => this.props.addProductToCart(this.props.viewParamsState)}
+                    onClick={() => {
+                      this.props.addProductToCart(this.props.viewParamsState);
+                      this.handleAddToCart();
+                    }}
                     type="button"
                     className="btn background-yellow montserrat-semi-bold hvr-icon-pulse-grow">
                     <i className="pr-2 m-0 h5 fas fa-shopping-cart hvr-icon"></i>

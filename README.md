@@ -1,4 +1,4 @@
-# Wicked Sales
+# Game City
 A full stack Node.js and React.js shopping cart app.
 
 ## Technologies Used
@@ -14,7 +14,7 @@ A full stack Node.js and React.js shopping cart app.
 - AWS EC2
 
 ## Live Demo
-Try the application live at https://wicked-sales.themichaelzhu.com/
+Try the application live at https://gamecity.themichaelzhu.com/
 
 ## Features
 - User can view the products for sale
@@ -24,7 +24,7 @@ Try the application live at https://wicked-sales.themichaelzhu.com/
 - User can place an order
 
 ## Preview
-![Wicked Sales Demo](server/public/images/demo.gif)
+![Game City Demo](server/public/images/demo.gif)
 
 ## Development
 ### System Requirements
@@ -35,7 +35,7 @@ Try the application live at https://wicked-sales.themichaelzhu.com/
 ### Getting Started
 1. Clone the repository.
     ```shell
-    git clone https://github.com/michaelzhu23/wicked-sales-js.git
+    git clone https://github.com/michaelzhu23/game-city.git
     cd wicked-sales-js
     ```
 2. Install all dependencies with NPM.
