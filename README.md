@@ -1,5 +1,5 @@
 # Game City
-A full stack Node.js and React.js shopping cart app.
+A full stack React.js and Node.js shopping cart app for video game e-commerce.
 
 ## Technologies Used
 - React.js
@@ -36,7 +36,7 @@ Try the application live at https://gamecity.themichaelzhu.com/
 1. Clone the repository.
     ```shell
     git clone https://github.com/michaelzhu23/game-city.git
-    cd wicked-sales-js
+    cd game-city
     ```
 2. Install all dependencies with NPM.
     ```shell
