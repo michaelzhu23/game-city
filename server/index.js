@@ -19,6 +19,10 @@ app.get('/api/health-check', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.get('/api/server-health-check', (req, res, next) => {
+  res.status(200).send("Server is alive! :)")
+});
+
 app.get('/api/products', function (req, res, next) {
   const sql = `
   select "productId",
