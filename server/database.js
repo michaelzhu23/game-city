@@ -1,10 +1,13 @@
 const pg = require('pg');
 
+const connectionString = process.env.DATABASE_URL;
+
 const db = new pg.Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString,
   ssl: process.env.NODE_ENV === 'production'
     ? { rejectUnauthorized: false }
-    : undefined
+    : undefined,
+  connectionTimeoutMillis: 10000
 });
 
 module.exports = db;

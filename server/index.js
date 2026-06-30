@@ -220,7 +220,31 @@ app.use((err, req, res, next) => {
   }
 });
 
+function logDatabaseConfig() {
+  if (!process.env.DATABASE_URL) {
+    console.error('DATABASE_URL is not set');
+    return;
+  }
+
+  try {
+    const url = new URL(process.env.DATABASE_URL);
+    console.log('Database host:', url.hostname);
+    console.log('Database user:', url.username);
+    console.log('Database port:', url.port || '5432');
+  } catch (err) {
+    console.error('DATABASE_URL is invalid:', err.message);
+  }
+}
+
+function testDatabaseConnection() {
+  db.query('select 1 as ok')
+    .then(() => console.log('Database connected successfully'))
+    .catch(err => console.error('Database connection failed:', err.message));
+}
+
 app.listen(process.env.PORT, () => {
   // eslint-disable-next-line no-console
   console.log('Listening on port', process.env.PORT);
+  logDatabaseConfig();
+  testDatabaseConnection();
 });
