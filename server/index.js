@@ -1,5 +1,6 @@
 require('dotenv/config');
 const express = require('express');
+const net = require('net');
 
 const db = require('./database');
 const ClientError = require('./client-error');
@@ -220,23 +221,65 @@ app.use((err, req, res, next) => {
   }
 });
 
-function logDatabaseConfig() {
+function getDatabaseTarget() {
+  if (process.env.DATABASE_HOST) {
+    return {
+      host: process.env.DATABASE_HOST,
+      port: Number(process.env.DATABASE_PORT || 5432),
+      user: process.env.DATABASE_USER
+    };
+  }
+
   if (!process.env.DATABASE_URL) {
-    console.error('DATABASE_URL is not set');
+    return null;
+  }
+
+  const url = new URL(process.env.DATABASE_URL.replace('postgres://', 'postgresql://'));
+  return {
+    host: url.hostname,
+    port: Number(url.port || 5432),
+    user: url.username
+  };
+}
+
+function logDatabaseConfig() {
+  const target = getDatabaseTarget();
+  if (!target) {
+    console.error('Database is not configured. Set DATABASE_URL or DATABASE_HOST.');
     return;
   }
 
-  try {
-    const url = new URL(process.env.DATABASE_URL);
-    console.log('Database host:', url.hostname);
-    console.log('Database user:', url.username);
-    console.log('Database port:', url.port || '5432');
-  } catch (err) {
-    console.error('DATABASE_URL is invalid:', err.message);
-  }
+  console.log('Database host:', target.host);
+  console.log('Database user:', target.user);
+  console.log('Database port:', target.port);
+}
+
+function testTcpConnection(host, port) {
+  return new Promise((resolve, reject) => {
+    const socket = net.connect({ host, port, timeout: 10000 });
+
+    socket.on('connect', () => {
+      socket.end();
+      resolve();
+    });
+
+    socket.on('timeout', () => {
+      socket.destroy();
+      reject(new Error('TCP timeout'));
+    });
+
+    socket.on('error', reject);
+  });
 }
 
 function testDatabaseConnection() {
+  const target = getDatabaseTarget();
+  if (!target) return;
+
+  testTcpConnection(target.host, target.port)
+    .then(() => console.log('TCP connection to database succeeded'))
+    .catch(err => console.error('TCP connection to database failed:', err.message));
+
   db.query('select 1 as ok')
     .then(() => console.log('Database connected successfully'))
     .catch(err => console.error('Database connection failed:', err.message));
