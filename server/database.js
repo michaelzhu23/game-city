@@ -24,15 +24,20 @@ function buildPoolConfig() {
     const user = process.env.DATABASE_USER;
     const password = encodeURIComponent(process.env.DATABASE_PASSWORD || '');
     const database = process.env.DATABASE_NAME || 'postgres';
-    const params = new URLSearchParams({ sslmode: 'require' });
+    const params = new URLSearchParams();
 
     if (port === 6543) {
       params.set('pgbouncer', 'true');
     }
 
+    const query = params.toString();
+    const connectionString = query
+      ? `postgresql://${user}:${password}@${host}:${port}/${database}?${query}`
+      : `postgresql://${user}:${password}@${host}:${port}/${database}`;
+
     return {
       ...base,
-      connectionString: `postgresql://${user}:${password}@${host}:${port}/${database}?${params.toString()}`
+      connectionString
     };
   }
 
@@ -43,9 +48,7 @@ function buildPoolConfig() {
     }
 
     const url = new URL(connectionString);
-    if (!url.searchParams.has('sslmode')) {
-      url.searchParams.set('sslmode', 'require');
-    }
+    url.searchParams.delete('sslmode');
     if (url.port === '6543' && !url.searchParams.has('pgbouncer')) {
       url.searchParams.set('pgbouncer', 'true');
     }
